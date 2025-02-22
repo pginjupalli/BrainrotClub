@@ -1,0 +1,6 @@
+#navbar a,
+#nav-drawer a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
