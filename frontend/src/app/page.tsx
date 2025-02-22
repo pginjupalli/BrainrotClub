@@ -1,3 +1,5 @@
+import Reel from "../components/Reel"
+
 export default function Home() {
-    return <h1>test</h1>;
+    return <><Reel/></>;
 }

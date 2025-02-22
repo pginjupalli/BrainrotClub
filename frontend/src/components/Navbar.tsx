@@ -1,131 +1,86 @@
 "use client";
 
-import {
-    AppBar,
-    Button,
-    Box,
-    Toolbar,
-    Typography,
-    List,
-    ListItem,
-    ListItemButton,
-    ListItemText,
-    Drawer,
-    IconButton,
-    CssBaseline,
-} from "@mui/material";
+import * as React from "react";
+import Box from "@mui/material/Box";
+import CssBaseline from "@mui/material/CssBaseline";
+import Divider from "@mui/material/Divider";
+import Drawer from "@mui/material/Drawer";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import DraftsIcon from "@mui/icons-material/Drafts";
+import SmartToyIcon from "@mui/icons-material/SmartToy";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import MovieIcon from "@mui/icons-material/Movie";
+import theme from "@/theme";
 
-import MenuIconRounded from "@mui/icons-material/MenuRounded";
-import CustomLink from "@/components/CustomLink";
+const drawerWidth = 240;
 
-import { useState } from "react";
+interface Props {
+  /**
+   * Injected by the documentation to work in an iframe.
+   * Remove this when copying and pasting into your project.
+   */
+  window?: () => Window;
+}
 
-import "./Navbar.css";
+export default function ResponsiveDrawer(props: Props) {
 
-const NAME = "CampusGenie";
 
-const NAV_ITEMS = [
-    {
-        title: "Test",
-        href: "/test",
-    },
-];
+  const icons = [
+    <MovieIcon />,
+    <AddCircleOutlineIcon />,
+    <SmartToyIcon />,
+    <DraftsIcon />,
+  ];
 
-const Navbar = () => {
-    const [drawerOpen, setDrawerOpen] = useState(false);
+  const drawer = (
+    <div>
+      <Typography
+        variant="h6"
+        p={2}
+        bgcolor={theme.palette.primary.main}
+        color="white"
+      >
+        CampusGenie
+      </Typography>
+      <Divider sx={{ bgcolor: "white" }} />
+      <List>
+        {["Create Post"].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon sx={{ color: "white" }}>
+                <AddCircleOutlineIcon />
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </div>
+  );
 
-    const handleDrawerToggle = () => {
-        setDrawerOpen(!drawerOpen);
-    };
-
-    const drawer = (
-        <Box
-            id="nav-drawer"
-            onClick={handleDrawerToggle}
-            sx={{ textAlign: "center" }}
+  return (
+    <div>
+        <Drawer
+          variant="persistent"
+          sx={{
+            display: { sm: "block" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+              backgroundColor: theme.palette.primary.main,
+              color: "white",
+            },
+          }}
+          open
         >
-            <List>
-                {NAV_ITEMS.map((item) => (
-                    <CustomLink key={item.title} href={item.href}>
-                        <ListItem disablePadding>
-                            <ListItemButton>
-                                <ListItemText primary={item.title} />
-                            </ListItemButton>
-                        </ListItem>
-                    </CustomLink>
-                ))}
-            </List>
-        </Box>
-    );
-
-    return (
-        <Box component="nav" id="navbar">
-            <CssBaseline />
-            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-                <AppBar component="nav">
-                    <Toolbar>
-                        <CustomLink href="/">
-                            <Typography variant="h6" color="">
-                                {NAME}
-                            </Typography>
-                        </CustomLink>
-
-                        <Box
-                            sx={{
-                                display: "flex",
-                                flexGrow: 1,
-                                justifyContent: "flex-end",
-                            }}
-                        >
-                            <IconButton
-                                color="inherit"
-                                edge="start"
-                                onClick={handleDrawerToggle}
-                                sx={{
-                                    display: { sm: "none" },
-                                }}
-                            >
-                                <MenuIconRounded />
-                            </IconButton>
-
-                            <Box sx={{ display: { xs: "none", sm: "flex" } }}>
-                                {NAV_ITEMS.map((item) => (
-                                    <CustomLink
-                                        key={item.title}
-                                        href={item.href}
-                                    >
-                                        <Button sx={{ color: "#fff" }}>
-                                            {item.title}
-                                        </Button>
-                                    </CustomLink>
-                                ))}
-                            </Box>
-                        </Box>
-                    </Toolbar>
-                </AppBar>
-            </Box>
-            <nav>
-                <Drawer
-                    variant="temporary"
-                    anchor="right"
-                    open={drawerOpen}
-                    onClose={handleDrawerToggle}
-                    ModalProps={{
-                        keepMounted: true,
-                    }}
-                    sx={{
-                        display: { xs: "block", sm: "block" },
-                        "& .MuiDrawer-paper": {
-                            boxSizing: "border-box",
-                            width: 240,
-                        },
-                    }}
-                >
-                    {drawer}
-                </Drawer>
-            </nav>
-        </Box>
-    );
-};
-
-export default Navbar;
+          {drawer}
+        </Drawer>
+    </div>
+  );
+}
