@@ -1,0 +1,262 @@
+{
+  "error": null,
+  "data": {
+    "avatars": [
+      {
+        "avatar_id": "Abigail_expressive_2024112501",
+        "avatar_name": "Abigail (Upper Body)",
+        "gender": "female",
+        "preview_image_url": "https://files2.heygen.ai/avatar/v3/1ad51ab9fee24ae88af067206e14a1d8_44250/preview_target.webp",
+        "preview_video_url": "https://files2.heygen.ai/avatar/v3/1ad51ab9fee24ae88af067206e14a1d8_44250/preview_video_target.mp4",
+        "premium": false,
+        "type": null,
+        "tags": null
+      },
+      {
+        "avatar_id": "Abigail_standing_office_front",
+        "avatar_name": "Abigail Office Front",
+        "gender": "female",
+        "preview_image_url": "https://files2.heygen.ai/avatar/v3/463208b6cad140d2b263535826838e3a_39240/preview_target.webp",
+        "preview_video_url": "https://files2.heygen.ai/avatar/v3/463208b6cad140d2b263535826838e3a_39240/preview_video_target.mp4",
+        "premium": false,
+        "type": null,
+        "tags": null
+      },
+      {
+        "avatar_id": "Abigail_standing_office_side",
+        "avatar_name": "Abigail Office Side",
+        "gender": "female",
+        "preview_image_url": "https://files2.heygen.ai/avatar/v3/9886d46db7f24260bb219c756ca0d759_39250/preview_target.webp",
+        "preview_video_url": "https://files2.heygen.ai/avatar/v3/9886d46db7f24260bb219c756ca0d759_39250/preview_video_target.mp4",
+        "premium": false,
+        "type": null,
+        "tags": null
+      },
+      {
+        "avatar_id": "Abigail_sitting_sofa_front",
+        "avatar_name": "Abigail Sofa Front",
+        "gender": "female",
+        "preview_image_url": "https://files2.heygen.ai/avatar/v3/cfdab85e050048d2abc901bf882c89a7_39220/preview_target.webp",
+        "preview_video_url": "https://files2.heygen.ai/avatar/v3/cfdab85e050048d2abc901bf882c89a7_39220/preview_video_target.mp4",
+        "premium": false,
+        "type": null,
+        "tags": null
+      },
+      {
+        "avatar_id": "Abigail_sitting_sofa_side",
+        "avatar_name": "Abigail Sofa Side",
+        "gender": "female",
+        "preview_image_url": "https://files2.heygen.ai/avatar/v3/e5e2683161894616b4cdf73d4f6ed6ea_39230/preview_target.webp",
+        "preview_video_url": "https://files2.heygen.ai/avatar/v3/e5e2683161894616b4cdf73d4f6ed6ea_39230/preview_video_target.mp4",
+        "premium": false,
+        "type": null,
+        "tags": null
+      },
+      {
+        "avatar_id": "Adriana_BizTalk_Front_public",
+        "avatar_name": "Adriana BizTalk Front",
+        "gender": "female",
+        "preview_image_url": "https://files2.heygen.ai/avatar/v3/c3d1baaebbe84752b7a473373c6cd385_42780/preview_target.webp",
+        "preview_video_url": "https://files2.heygen.ai/avatar/v3/c3d1baaebbe84752b7a473373c6cd385_42780/preview_video_target.mp4",
+        "premium": false,
+        "type": null,
+        "tags": null
+      },
+      {
+        "avatar_id": "Adriana_BizTalk_Side_public",
+        "avatar_name": "Adriana BizTalk Side",
+        "gender": "female",
+        "preview_image_url": "https://files2.heygen.ai/avatar/v3/5fb6d7ff842944f69d1ba419e15e2d77_42450/preview_talk_2.webp",
+        "preview_video_url": "https://files2.heygen.ai/avatar/v3/5fb6d7ff842944f69d1ba419e15e2d77_42450/preview_video_talk_2.mp4",
+        "premium": false,
+        "type": null,
+        "tags": null
+      },
+      {
+        "avatar_id": "Adriana_Business_Front_2_public",
+        "avatar_name": "Adriana Business Front 2",
+        "gender": "female",
+        "preview_image_url": "https://files2.heygen.ai/avatar/v3/88dbd2785def417ca7a2b79d4cf40c6d_42780/preview_talk_3.webp",
+        "preview_video_url": "https://files2.heygen.ai/avatar/v3/88dbd2785def417ca7a2b79d4cf40c6d_42780/preview_video_talk_3.mp4",
+        "premium": false,
+        "type": null,
+        "tags": null
+      },
+      {
+        "avatar_id": "Adriana_Business_Front_public",
+        "avatar_name": "Adriana Business Front ",
+        "gender": "female",
+        "preview_image_url": "https://files2.heygen.ai/avatar/v3/2b68bcf81edc44fabdc9070e62ca1f82_42780/preview_talk_2.webp",
+        "preview_video_url": "https://files2.heygen.ai/avatar/v3/2b68bcf81edc44fabdc9070e62ca1f82_42780/preview_video_talk_2.mp4",
+        "premium": false,
+        "type": null,
+        "tags": null
+      },
+      {
+        "avatar_id": "Adriana_Business_Side_public",
+        "avatar_name": "Adriana Business Side",
+        "gender": "female",
+        "preview_image_url": "https://files2.heygen.ai/avatar/v3/18f25fd5ce0040a29a954e95165e233a_42770/preview_target.webp",
+        "preview_video_url": "https://files2.heygen.ai/avatar/v3/18f25fd5ce0040a29a954e95165e233a_42770/preview_video_target.mp4",
+        "premium": false,
+        "type": null,
+        "tags": null
+      },
+      {
+        "avatar_id": "Adriana_SuitSofa_Front_public",
+        "avatar_name": "Adriana SuitSofa Front",
+        "gender": "female",
+        "preview_image_url": "https://files2.heygen.ai/avatar/v3/ab83416187164ac386f72e7c7288e70b_42780/preview_talk_1.webp",
+        "preview_video_url": "https://files2.heygen.ai/avatar/v3/ab83416187164ac386f72e7c7288e70b_42780/preview_video_talk_1.mp4",
+        "premium": false,
+        "type": null,
+        "tags": null
+      },
+      {
+        "avatar_id": "Aiko_public",
+        "avatar_name": "Aiko",
+        "gender": "female",
+        "preview_image_url": "https://files2.heygen.ai/avatar/v3/1cc18796d5e44342b3247c1aa847bc8f_52250/preview_target.webp",
+        "preview_video_url": "https://files2.heygen.ai/avatar/v3/1cc18796d5e44342b3247c1aa847bc8f_52250/preview_video_target.mp4",
+        "premium": false,
+        "type": null,
+        "tags": null
+      },
+      {
+        "avatar_id": "Amanda_in_Blue_Shirt_Front",
+        "avatar_name": "Amanda in Blue Shirt (Front)",
+        "gender": "female",
+        "preview_image_url": "https://files2.heygen.ai/avatar/v3/74982c18df0f43fbbf304133b49b2170_35020/preview_target.webp",
+        "preview_video_url": "https://files2.heygen.ai/avatar/v3/74982c18df0f43fbbf304133b49b2170_35020/preview_video_target.mp4",
+        "premium": false,
+        "type": null,
+        "tags": null
+      },
+      {
+        "avatar_id": "Amanda_in_Blue_Shirt_Left",
+        "avatar_name": "Amanda in Blue Shirt (Left)",
+        "gender": "female",
+        "preview_image_url": "https://files2.heygen.ai/avatar/v3/df3a17e47a5c4cada4199c4bab4b4cff_35030/preview_target.webp",
+        "preview_video_url": "https://files2.heygen.ai/avatar/v3/df3a17e47a5c4cada4199c4bab4b4cff_35030/preview_video_target.mp4",
+        "premium": false,
+        "type": null,
+        "tags": null
+      },
+      {
+        "avatar_id": "Amanda_in_Blue_Shirt_Right",
+        "avatar_name": "Amanda in Blue Shirt (Right)",
+        "gender": "female",
+        "preview_image_url": "https://files2.heygen.ai/avatar/v3/912f2e54677a4f29b1dc877d20e3ce49_35040/preview_target.webp",
+        "preview_video_url": "https://files2.heygen.ai/avatar/v3/912f2e54677a4f29b1dc877d20e3ce49_35040/preview_video_target.mp4",
+        "premium": false,
+        "type": null,
+        "tags": null
+      },
+      {
+        "avatar_id": "Amelia_sitting_business_training_front",
+        "avatar_name": "Amelia Business Training Front 2",
+        "gender": "female",
+        "preview_image_url": "https://files2.heygen.ai/avatar/v3/0233ba6aea01411ab07ddafbf97886f2_39260/preview_talk_2.webp",
+        "preview_video_url": "https://files2.heygen.ai/avatar/v3/0233ba6aea01411ab07ddafbf97886f2_39260/preview_video_talk_2.mp4",
+        "premium": false,
+        "type": null,
+        "tags": null
+      },
+      {
+        "avatar_id": "Amelia_standing_business_training_front",
+        "avatar_name": "Amelia Business Training Front",
+        "gender": "female",
+        "preview_image_url": "https://files2.heygen.ai/avatar/v3/20cf0b98ae164abdb4a814dab98e69ca_39260/preview_talk_3.webp",
+        "preview_video_url": "https://files2.heygen.ai/avatar/v3/20cf0b98ae164abdb4a814dab98e69ca_39260/preview_video_talk_3.mp4",
+        "premium": false,
+        "type": null,
+        "tags": null
+      },
+      {
+        "avatar_id": "Amelia_sitting_business_training_side",
+        "avatar_name": "Amelia Business Training Side 2",
+        "gender": "female",
+        "preview_image_url": "https://files2.heygen.ai/avatar/v3/af703fd4f280409c87ba7d5376ca8cb3_39270/preview_talk_3.webp",
+        "preview_video_url": "https://files2.heygen.ai/avatar/v3/af703fd4f280409c87ba7d5376ca8cb3_39270/preview_video_talk_3.mp4",
+        "premium": false,
+        "type": null,
+        "tags": null
+      },
+      {
+        "avatar_id": "Amelia_standing_business_training_side",
+        "avatar_name": "Amelia Business Training Side",
+        "gender": "female",
+        "preview_image_url": "https://files2.heygen.ai/avatar/v3/16741476b7a549288bfefdf05ed8aa5d_39270/preview_talk_4.webp",
+        "preview_video_url": "https://files2.heygen.ai/avatar/v3/16741476b7a549288bfefdf05ed8aa5d_39270/preview_video_talk_4.mp4",
+        "premium": false,
+        "type": null,
+        "tags": null
+      },
+      {
+        "avatar_id": "Amelia_lying_lounge_front",
+        "avatar_name": "Amelia Lounge Front 2",
+        "gender": "female",
+        "preview_image_url": "https://files2.heygen.ai/avatar/v3/d684929e24d545de9fd98ae031541265_39260/preview_talk_5.webp",
+        "preview_video_url": "https://files2.heygen.ai/avatar/v3/d684929e24d545de9fd98ae031541265_39260/preview_video_talk_5.mp4",
+        "premium": false,
+        "type": null,
+        "tags": null
+      },
+      {
+        "avatar_id": "Amelia_standing_lounge_front",
+        "avatar_name": "Amelia Lounge Front",
+        "gender": "female",
+        "preview_image_url": "https://files2.heygen.ai/avatar/v3/5e0c02e028214c5d83a8fb6f93d8af8b_39260/preview_talk_4.webp",
+        "preview_video_url": "https://files2.heygen.ai/avatar/v3/5e0c02e028214c5d83a8fb6f93d8af8b_39260/preview_video_talk_4.mp4",
+        "premium": false,
+        "type": null,
+        "tags": null
+      },
+      {
+        "avatar_id": "Amelia_lying_lounge_side",
+        "avatar_name": "Amelia Lounge Side 2",
+        "gender": "female",
+        "preview_image_url": "https://files2.heygen.ai/avatar/v3/373b306eb011498f86f1b02803baf9d9_39280/preview_target.webp",
+        "preview_video_url": "https://files2.heygen.ai/avatar/v3/373b306eb011498f86f1b02803baf9d9_39280/preview_video_target.mp4",
+        "premium": false,
+        "type": null,
+        "tags": null
+      },
+      {
+        "avatar_id": "Amelia_standing_lounge_side",
+        "avatar_name": "Amelia Lounge Side",
+        "gender": "female",
+        "preview_image_url": "https://files2.heygen.ai/avatar/v3/a3a8835d393646f3af4154c470440004_39270/preview_target.webp",
+        "preview_video_url": "https://files2.heygen.ai/avatar/v3/a3a8835d393646f3af4154c470440004_39270/preview_video_target.mp4",
+        "premium": false,
+        "type": null,
+        "tags": null
+      },
+      {
+        "avatar_id": "Amelia_sitting_yoga_front",
+        "avatar_name": "Amelia Yoga Front 2",
+        "gender": "female",
+        "preview_image_url": "https://files2.heygen.ai/avatar/v3/dea59fe8a4d34fb9a28bb24b30424fd3_39260/preview_talk_1.webp",
+        "preview_video_url": "https://files2.heygen.ai/avatar/v3/dea59fe8a4d34fb9a28bb24b30424fd3_39260/preview_video_talk_1.mp4",
+        "premium": false,
+        "type": null,
+        "tags": null
+      },
+      {
+        "avatar_id": "Amelia_standing_yoga_front",
+        "avatar_name": "Amelia Yoga Front",
+        "gender": "female",
+        "preview_image_url": "https://files2.heygen.ai/avatar/v3/1f58c0f60faa4cb5bf6c465615e3fb18_39260/preview_target.webp",
+        "preview_video_url": "https://files2.heygen.ai/avatar/v3/1f58c0f60faa4cb5bf6c465615e3fb18_39260/preview_video_target.mp4",
+        "premium": false,
+        "type": null,
+        "tags": null
+      },
+      {
+        "avatar_id": "Amelia_sitting_yoga_side",
+        "avatar_name": "Amelia Yoga Side 2",
+        "gender": null
+      }
+    ]
+  }
+}
