@@ -1,7 +1,6 @@
 from django.contrib import admin
+from django.apps import apps
 
-from . import models
 
-# Register your models here.
-for model in models:
+for model in apps.get_app_config("brainrot_app").get_models():
     admin.site.register(model)
