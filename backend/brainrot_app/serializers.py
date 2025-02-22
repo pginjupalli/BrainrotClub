@@ -14,4 +14,4 @@ class PostSerializer(rf_serializers.ModelSerializer):
 
     class Meta:
         model = models.Post
-        fields = ["uuid", "club_name", "title", "content", "date_posted", "video"]
+        fields = ["uuid", "club_name", "title", "body", "date_posted", "video"]
