@@ -13,7 +13,7 @@ class Post(models.Model):
     video = models.ForeignKey("Video", on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
-        return f"{self.title}: {self.club_name}"
+        return f"{self.uuid} ({self.title}: {self.club_name})"
 
 
 class Video(models.Model):
