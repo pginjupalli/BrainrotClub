@@ -52,7 +52,7 @@ export default function ResponsiveDrawer(props: Props) {
       <List>
         {["Create Post"].map((text, index) => (
           <ListItem key={text} disablePadding>
-            <ListItemButton>
+            <ListItemButton href="/createpost">
               <ListItemIcon sx={{ color: "white" }}>
                 <AddCircleOutlineIcon />
               </ListItemIcon>
