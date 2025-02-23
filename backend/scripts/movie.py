@@ -102,6 +102,8 @@ def greenscreen_overlay(video_a_filename, video_b_filename, output_name):
     clip_B = clip_B.crop(x_center=clip_B.w/2, y_center=clip_B.h/2,
                             width=min(clip_B.w, clip_B.h*9/16),
                             height=min(clip_B.h, clip_B.w*16/9)).resize(common_size)
+    
+
 
     # Apply green screen (chroma key) effect on clip_A.
     # This removes the green background color ([0, 255, 0]). Adjust 'thr' (threshold) and 's' (softness) as needed.from moviepy.video.fx.mask_color import mask_color
@@ -119,10 +121,30 @@ def greenscreen_overlay(video_a_filename, video_b_filename, output_name):
     # clip_A = clip_A.set_fps(fps)
     # clip_B = clip_B.set_fps(fps)
     
+    # Resize clip_A (scale down to 80% of its size)
+    clip_A = clip_A.resize(0.6)
+
+    # Calculate centered position
+    x_pos = (clip_B.w - clip_A.w) / 2
+    y_pos = (clip_B.h - clip_A.h) / 2 + 150  # shift down by 50 pixels
+
+    # Clamp the positions to ensure clip_A stays within clip_B
+    x_pos = max(0, min(x_pos, clip_B.w - clip_A.w))
+    y_pos = max(0, min(y_pos, clip_B.h - clip_A.h))
+
+    # Composite clip_A over clip_B with the clamped position
+    composite_clip = CompositeVideoClip(
+        [clip_B, clip_A.set_position((x_pos, y_pos))],
+        size=clip_B.size
+    )
+    
     # Composite clip_A (foreground) over clip_B (background).
     # Here, clip_A is centered over clip_B. You can adjust the position if necessary.
-    composite_clip = CompositeVideoClip([clip_B, clip_A.set_position("center")], size=clip_B.size)
-
+    # composite_clip = CompositeVideoClip([clip_B, clip_A.set_position("center")], size=clip_B.size)
+    # composite_clip = CompositeVideoClip(
+    #     [clip_B, clip_A.set_position(("center", "60%"))],  # "60%" moves it lower than center
+    #     size=clip_B.size
+    # )
     # Use the audio from clip_A.
     if clip_A.audio is not None:
         composite_clip = composite_clip.set_audio(clip_A.audio)

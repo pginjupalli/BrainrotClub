@@ -44,16 +44,36 @@ class PostList(generics.ListCreateAPIView):
         voice = request.data.pop("voice")
         bg = request.data.pop("bg")
         
+        load = False
+        if request.data.get("load"):
+            request.data.pop("load")
+            load = True
+        
+        print(load)
+        
         post = models.Post.objects.create(video=video, **request.data)
-
+        
+        if load:
+            video.file = f"videos/hackathon.mp4"
+            video.thumbnail = f"thumbnails/hackathon.png"
+            video.save()
+            post.body = """Hey there, tech enthusiasts and changemakers! Are you ready for the most exciting event of the year? It's HopperHacks, brought to you by WiCS!
+Imagine a day filled with coding, creativity, and making a real difference in the world. That's exactly what HopperHacks is all about! We're talking about a social good-focused hackathon that'll blow your mind!
+Got ideas to tackle mental health issues? Want to revolutionize education? Or maybe you're passionate about saving our planet? Whatever your cause, HopperHacks is your chance to shine!
+Join us for an unforgettable day where you'll apply your tech skills to solve real-world problems. We're talking about issues that affect societies globally – and you'll be at the forefront of creating solutions!
+Whether you're a coding wizard or just starting out, HopperHacks welcomes all! Team up with like-minded individuals, brainstorm innovative ideas, and turn them into reality. Who knows? Your project might just change the world!
+So, what are you waiting for? Mark your calendars, grab your laptops, and get ready to hack for good! HopperHacks is coming, and trust me, you don't want to miss this! See you there, future world-changers!"""
+            post.save()
+            response_data = self.get_serializer(post).data
+            return Response(response_data)
+        else:
+            thread = threading.Thread(
+                target=process_video,
+                args=(bg, details, club_name, event_name, tone, persona, voice, post.uuid, video.uuid)
+            )
+            thread.start()
+        
         response_data = self.get_serializer(post).data
-
-        thread = threading.Thread(
-            target=process_video,
-            args=(bg, details, club_name, event_name, tone, persona, voice, post.uuid, video.uuid)
-        )
-        thread.start()
-
         return Response(response_data)
 
 
@@ -70,11 +90,14 @@ def process_video(bg, details, club_name, event_name, tone, persona, voice, p_uu
     post = models.Post.objects.get(pk=p_uuid)
     post.body = script
     post.save()
+    
+    print(script)
+    
 
     heygen.get_video(v_uuid, script[:200], avatar_id=persona, voice_id=voice)
 
     movie.greenscreen_overlay(f"media/videos/{v_uuid}_green.mp4", bg, f"media/videos/{v_uuid}.mp4")
 
-    video.file = f"media/videos/{v_uuid}.mp4"
-    video.thumbnail = f"media/thumbnails/{v_uuid}.png"
+    video.file = f"videos/{v_uuid}.mp4"
+    video.thumbnail = f"thumbnails/{v_uuid}.png"
     video.save()
