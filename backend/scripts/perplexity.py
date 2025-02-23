@@ -21,7 +21,11 @@ def perplexity_search(search):
         The event name is {search["event_name"]}.\n
         The details are as follows: {search["details"]}.\n
         Use a(n) {search["tone"]} tone.\n
-        MAKE SURE NOT TO INCLUDE ANY OTHER TEXT BESIDES THE SCRIPT. THIS IS IMPORTANT!"""
+        MAKE SURE NOT TO INCLUDE ANY OTHER TEXT BESIDES THE SCRIPT.\n
+        THE TEXT YOU OUTPUT WILL BE SPOKEN EXACTLY AS-IS.\n
+        SO DON'T INCLUDE ANYTHING LIKE "[in an angry tone]" AT THE BEGINNING OR ANYTHING SIMILAR.\n
+        THESE ARE IMPORTANT!\n
+        """
         
     print(content)
 
