@@ -12,16 +12,23 @@ class PostList(generics.ListCreateAPIView):
 
     # Only show posts that have a Video
     def get_queryset(self):
-        return self.queryset.exclude(video__isnull=True)
+        return self.queryset.exclude(video__isnull=True).order_by("-date_posted")
 
     def post(self, request, *args, **kwargs):
-        if not request.data.get("details"): return Response({"details": "This field is required."}, status=400)
-        if not request.data.get("club_name"): return Response({"club_name": "This field is required"}, status=400)
-        if not request.data.get("title"): return Response({"event_name": "This field is required"}, status=400)
-        if not request.data.get("tone"): return Response({"tone": "This field is required"}, status=400)
-        if not request.data.get("persona"): return Response({"persona": "This field is required"}, status=400)
-        if not request.data.get("voice"): return Response({"voice": "This field is required"}, status=400)
-        if not request.data.get("bg"): return Response({"bg": "This field is required"}, status=400)
+        if not request.data.get("details"):
+            return Response({"details": "This field is required."}, status=400)
+        if not request.data.get("club_name"):
+            return Response({"club_name": "This field is required"}, status=400)
+        if not request.data.get("title"):
+            return Response({"event_name": "This field is required"}, status=400)
+        if not request.data.get("tone"):
+            return Response({"tone": "This field is required"}, status=400)
+        if not request.data.get("persona"):
+            return Response({"persona": "This field is required"}, status=400)
+        if not request.data.get("voice"):
+            return Response({"voice": "This field is required"}, status=400)
+        if not request.data.get("bg"):
+            return Response({"bg": "This field is required"}, status=400)
 
         # Create the video without setting file or thumbnail yet.
         video = models.Video.objects.create()
@@ -43,16 +50,16 @@ class PostList(generics.ListCreateAPIView):
         persona = request.data.pop("persona")
         voice = request.data.pop("voice")
         bg = request.data.pop("bg")
-        
+
         load = False
         if request.data.get("load"):
             request.data.pop("load")
             load = True
-        
+
         print(load)
-        
+
         post = models.Post.objects.create(video=video, **request.data)
-        
+
         if load:
             video.file = f"videos/hackathon.mp4"
             video.thumbnail = f"thumbnails/hackathon.png"
@@ -69,10 +76,20 @@ So, what are you waiting for? Mark your calendars, grab your laptops, and get re
         else:
             thread = threading.Thread(
                 target=process_video,
-                args=(bg, details, club_name, event_name, tone, persona, voice, post.uuid, video.uuid)
+                args=(
+                    bg,
+                    details,
+                    club_name,
+                    event_name,
+                    tone,
+                    persona,
+                    voice,
+                    post.uuid,
+                    video.uuid,
+                ),
             )
             thread.start()
-        
+
         response_data = self.get_serializer(post).data
         return Response(response_data)
 
@@ -82,21 +99,30 @@ from scripts import movie
 from scripts import perplexity
 
 
-def process_video(bg, details, club_name, event_name, tone, persona, voice, p_uuid, v_uuid):
-    
-    script = perplexity.perplexity_search({"details": details, "club_name": club_name, "event_name": event_name, "tone": tone})
+def process_video(
+    bg, details, club_name, event_name, tone, persona, voice, p_uuid, v_uuid
+):
+    script = perplexity.perplexity_search(
+        {
+            "details": details,
+            "club_name": club_name,
+            "event_name": event_name,
+            "tone": tone,
+        }
+    )
 
     video = models.Video.objects.get(pk=v_uuid)
     post = models.Post.objects.get(pk=p_uuid)
     post.body = script
     post.save()
-    
+
     print(script)
-    
 
     heygen.get_video(v_uuid, script[:200], avatar_id=persona, voice_id=voice)
 
-    movie.greenscreen_overlay(f"media/videos/{v_uuid}_green.mp4", bg, f"media/videos/{v_uuid}.mp4")
+    movie.greenscreen_overlay(
+        f"media/videos/{v_uuid}_green.mp4", bg, f"media/videos/{v_uuid}.mp4"
+    )
 
     video.file = f"videos/{v_uuid}.mp4"
     video.thumbnail = f"thumbnails/{v_uuid}.png"
