@@ -45,23 +45,14 @@ def generate_video(script_text,
                 "background": {
                     "type": "color",
                     "value": background_color
-                },
-                "subtitles": {
-                    "enable": True,         # Enable subtitle generation.
-                    "auto_sync": True,      # Let HeyGen align the subtitles to the voiceover.
-                    "text": script_text,    # Use the same script text for the subtitles.
-                    "language": "en",       # Specify the language.
-                    "font": "Arial",        # (Optional) Specify a font.
-                    "font_size": 24,        # (Optional) Specify the font size.
-                    "color": "#FFFFFF",     # (Optional) Subtitle text color.
-                    "position": "bottom"    # (Optional) Subtitle position.
                 }
             }
         ],
         "dimension": {
             "width": width,
             "height": height
-        }
+        },
+        "caption": True
     }
     
     headers = {
@@ -123,25 +114,25 @@ def poll_video_status(video_id, headers, v_uuid):
             print(f"Unexpected status received: {status}. Retrying in 5 seconds...")
             time.sleep(5)
 
-# def get_video(v_uuid,
-#               script_text,
-#               avatar_id="Daisy-inskirt-20220818",
-#               voice_id="2d5b0e6cf36f460aa7fc47e3eee4ba54"):
-#     video_id, headers = generate_video(script_text,
-#                    avatar_id=avatar_id,
-#                    voice_id=voice_id,
-#                    background_color="#008000",
-#                    width=1080/2,
-#                    height=1920/2)
-#     print(f"Video generation started. Video ID: {video_id}")
-#     poll_video_status(video_id, headers, v_uuid)
-
-import subprocess
-
 def get_video(v_uuid,
               script_text,
               avatar_id="Daisy-inskirt-20220818",
               voice_id="2d5b0e6cf36f460aa7fc47e3eee4ba54"):
+    video_id, headers = generate_video(script_text,
+                   avatar_id=avatar_id,
+                   voice_id=voice_id,
+                   background_color="#008000",
+                   width=1080/2,
+                   height=1920/2)
+    print(f"Video generation started. Video ID: {video_id}")
+    poll_video_status(video_id, headers, v_uuid)
+
+# import subprocess
+
+# def get_video(v_uuid,
+#               script_text,
+#               avatar_id="Daisy-inskirt-20220818",
+#               voice_id="2d5b0e6cf36f460aa7fc47e3eee4ba54"):
    
-    print(subprocess.call(["copy", "videoA.mp4", f"media\\videos\\{v_uuid}_green.mp4"], shell=True))
+#     print(subprocess.call(["copy", "videoA.mp4", f"media\\videos\\{v_uuid}_green.mp4"], shell=True))
 
