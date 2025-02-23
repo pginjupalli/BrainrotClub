@@ -24,9 +24,9 @@ const theme = createTheme({
             paper: "#FFFFFF", // Pure white for cards and surfaces
         },
         text: {
-            primary: "#333333", // Dark gray text for readability
-            secondary: "#555555", // Slightly lighter for secondary text
-        },
+            primary: "#222121",    // 15% darker thanrgb(22, 21, 21)
+            secondary: "#222121",  // 13% darker than #555555
+          },
     },
     typography: {
         fontFamily: "var(--font-roboto), sans-serif",
