@@ -155,10 +155,10 @@ export default function CreatePostPage() {
             const body = {
                 club_name: "WiCS",
                 title: "HopperHacks",
-                details: "",
-                tone: "",
-                persona: "",
-                bg: "",
+                details: "asdasd",
+                tone: "asdsad",
+                persona: "asdasd",
+                bg: "asdsad",
                 load: "True",
                 voice: "2d5b0e6cf36f460aa7fc47e3eee4ba54",
             };
@@ -172,16 +172,17 @@ export default function CreatePostPage() {
             });
 
             if (!response.ok) {
-                console.log(response);
+                const responseData = await response.json();
+                console.log(responseData);
                 alert("Failed to create post");
             } else {
                 // redirect to homepage
-                redirect("/");
             }
         } catch (err) {
             setSubmitError((err as Error).message);
         } finally {
             setIsSubmitting(false);
+            redirect("/");
         }
     };
 
