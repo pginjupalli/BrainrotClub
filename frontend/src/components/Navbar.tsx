@@ -46,7 +46,7 @@ export default function ResponsiveDrawer(props: Props) {
                     bgcolor={theme.palette.primary.main}
                     color="white"
                 >
-                    CampusGenie
+                    BrainrotClub
                 </Typography>
             </Link>
             <Divider sx={{ bgcolor: "white" }} />
