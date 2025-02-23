@@ -18,9 +18,10 @@ interface Post {
 
 interface Props {
     post: Post;
+    onVisibilityChange: (uuid: string, visible: boolean) => void;
 }
 
-const Video: React.FC<Props> = ({ post }) => {
+const Video: React.FC<Props> = ({ post, onVisibilityChange }) => {
     const [visible, setVisible] = useState(false);
     const [playing, setPlaying] = useState(false);
 
@@ -79,6 +80,7 @@ const Video: React.FC<Props> = ({ post }) => {
             onChange={(inView) => {
                 setVisible(inView);
                 resetVideo(inView);
+                onVisibilityChange(post.uuid, inView);
             }}
             threshold={0.75}
         >

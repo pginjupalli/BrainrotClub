@@ -2,6 +2,7 @@
 
 import { Box, Typography } from "@mui/material";
 import useSWRInfinite from "swr/infinite";
+import React, { useState } from "react";
 
 import Video from "@/components/Video";
 
@@ -21,6 +22,16 @@ export default function Player() {
         video: Video;
     }
 
+    const [visibleVideo, setVisibleVideo] = useState<string | null>(null);
+
+    const handleVisibilityChange = (uuid: string, visible: boolean) => {
+        if (visible) {
+            setVisibleVideo(uuid);
+        } else if (visibleVideo === uuid) {
+            setVisibleVideo(null);
+        }
+    };
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const getKey = (pageIndex: number, previousPageData: any[] | null) => {
         if (previousPageData && previousPageData.length === 0) return null;
@@ -32,6 +43,10 @@ export default function Player() {
 
     const { data, error, size, setSize, isLoading, isReachingEnd } =
         useSWRInfinite(getKey, fetcher);
+
+    const visiblePost = data
+        ?.flat()
+        .find((post: Post) => post.uuid === visibleVideo);
 
     // console.log("data", data);
     // console.log("error", error);
@@ -71,7 +86,11 @@ export default function Player() {
                     >
                         {data.map((page) =>
                             page.map((post: Post) => (
-                                <Video key={post.uuid} post={post} />
+                                <Video
+                                    key={post.uuid}
+                                    post={post}
+                                    onVisibilityChange={handleVisibilityChange}
+                                />
                             ))
                         )}
                     </div>
@@ -85,9 +104,9 @@ export default function Player() {
                     width: "500px",
                 }}
             >
-                <Typography variant="h5">WiCS</Typography>
-                <Typography variant="h3">Event name</Typography>
-                <Typography variant="p">Event description</Typography>
+                <Typography variant="h5">{visiblePost?.club_name}</Typography>
+                <Typography variant="h3">{visiblePost?.title}</Typography>
+                <Typography variant="p">{visiblePost?.body}</Typography>
             </Box>
         </Box>
     );
