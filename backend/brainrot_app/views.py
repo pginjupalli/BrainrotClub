@@ -15,10 +15,9 @@ class PostList(generics.ListCreateAPIView):
 
     def post(self, request, *args, **kwargs):
         if not request.data.get("details"): return Response({"details": "This field is required."}, status=400)
-        if not request.data.get("name"): return Response({"name": "This field is required"}, status=400)
-        if not request.data.get("audience"): return Response({"audience": "This field is required"}, status=400)
+        if not request.data.get("club_name"): return Response({"club_name": "This field is required"}, status=400)
+        if not request.data.get("title"): return Response({"event_name": "This field is required"}, status=400)
         if not request.data.get("tone"): return Response({"tone": "This field is required"}, status=400)
-        if not request.data.get("colors"): return Response({"colors": "This field is required"}, status=400)
         if not request.data.get("persona"): return Response({"persona": "This field is required"}, status=400)
         if not request.data.get("voice"): return Response({"voice": "This field is required"}, status=400)
 
@@ -36,21 +35,19 @@ class PostList(generics.ListCreateAPIView):
         # }
         
         details = request.data.pop("details")
-        name = request.data.pop("name")
-        audience = request.data.pop("audience")
+        club_name = request.data.get("club_name")
+        event_name = request.data.get("title")
         tone = request.data.pop("tone")
-        colors = request.data.pop("colors")
         persona = request.data.pop("persona")
         voice = request.data.pop("voice")
         
         post = models.Post.objects.create(video=video, **request.data)
 
-        # Serialize the post data for the response.
         response_data = self.get_serializer(post).data
         
         thread = threading.Thread(
             target=process_video,
-            args=(details, name, audience, tone, colors, persona, voice, video.uuid)
+            args=(details, club_name, event_name, tone, persona, voice, post.uuid, video.uuid)
         )
         thread.start()
 
@@ -58,9 +55,19 @@ class PostList(generics.ListCreateAPIView):
 
 from scripts import heygen
 from scripts import movie
+from scripts import perplexity
 
-def process_video(details, name, audience, tone, colors, persona, voice, v_uuid):
+def process_video(details, club_name, event_name, tone, persona, voice, p_uuid, v_uuid):
+    
+    script = perplexity.perplexity_search({"details": details, "club_name": club_name, "event_name": event_name, "tone": tone})
+    print(script)
+    
     video = models.Video.objects.get(pk=v_uuid)
+    post = models.Post.objects.get(pk=p_uuid)
+    post.body = script
+    
+    heygen.get_video(v_uuid, script, avatar_id=persona, voice_id=voice)
+    
     video.file = f"videos/{v_uuid}.mp4"
     video.thumbnail = f"thumbnails/{v_uuid}.png"
     video.save()

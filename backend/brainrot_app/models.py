@@ -7,6 +7,7 @@ class Post(models.Model):
 
     title = models.CharField(max_length=100)
     club_name = models.CharField(max_length=100)
+
     body = models.TextField(null=True, blank=True)
     date_posted = models.DateTimeField(auto_now_add=True)
 

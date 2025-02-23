@@ -69,7 +69,7 @@ def generate_video(script_text,
     
     return video_id, headers
 
-def poll_video_status(video_id, headers):
+def poll_video_status(video_id, headers, v_uuid):
     """
     Polls the HeyGen API for the status of the generated video until it's completed.
     Once completed, the video is downloaded and saved locally.
@@ -93,7 +93,7 @@ def poll_video_status(video_id, headers):
             print(f"Video generation completed!\nVideo URL: {video_url}\nThumbnail URL: {thumbnail_url}")
             
             # Download and save the video to a file
-            video_filename = "generated_video.mp4"
+            video_filename = f"media/videos/{v_uuid}.mp4"
             video_content = requests.get(video_url).content
             with open(video_filename, "wb") as video_file:
                 video_file.write(video_content)
@@ -113,23 +113,18 @@ def poll_video_status(video_id, headers):
             print(f"Unexpected status received: {status}. Retrying in 5 seconds...")
             time.sleep(5)
 
-if __name__ == "__main__":
-    # Replace this with your desired script text
-    script_text = "This is some sample text."
+def get_video(v_uuid,
+              script_text,
+              avatar_id="Daisy-inskirt-20220818",
+              voice_id="2d5b0e6cf36f460aa7fc47e3eee4ba54"):
+    print(avatar_id)
+    video_id, headers = generate_video(script_text,
+                   avatar_id=avatar_id,
+                   voice_id=voice_id,
+                   background_color="#008000",
+                   width=1080/2,
+                   height=1920/2)
+    print(f"Video generation started. Video ID: {video_id}")
+    poll_video_status(video_id, headers, v_uuid)
     
-    try:
-        # Create the video generation request
-        video_id, headers = generate_video(script_text)
-        print(f"Video generation started. Video ID: {video_id}")
-        
-        # Poll for the video generation status and download when completed
-        poll_video_status(video_id, headers)
-        
-    except requests.exceptions.HTTPError as http_err:
-        print(f"HTTP error occurred: {http_err}")
-    except Exception as err:
-        print(f"An error occurred: {err}")
-        
-        
-
 
