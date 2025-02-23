@@ -40,7 +40,7 @@ export default function RootLayout({
                   maxWidth: "calc(100vw - 240px)",
                   position: "relative",
                   left: "240px",
-                  padding: "1rem",
+                  padding: "3rem",
                 }}
               >
                 {children}
