@@ -1,8 +1,9 @@
 "use client";
 
-import { Box } from "@mui/material";
-import { useRef } from "react";
+import { Box, Typography } from "@mui/material";
 import useSWRInfinite from "swr/infinite";
+
+import Video from "@/components/Video";
 
 export default function Player() {
     interface Video {
@@ -40,6 +41,9 @@ export default function Player() {
         <Box
             sx={{
                 height: "100vh",
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
             }}
         >
             <Box
@@ -67,25 +71,24 @@ export default function Player() {
                     >
                         {data.map((page) =>
                             page.map((post: Post) => (
-                                <div
-                                    key={post.uuid}
-                                    style={{
-                                        height: "100vh",
-                                        scrollSnapAlign: "start",
-                                        backgroundColor: `#${Math.floor(
-                                            Math.random() * 16777215
-                                        ).toString(16)}`,
-                                    }}
-                                >
-                                    <h1>{post.title}</h1>
-                                    <p>{post.body}</p>
-                                </div>
+                                <Video key={post.uuid} post={post} />
                             ))
                         )}
                     </div>
                 )}
             </Box>
-            <pre>{JSON.stringify({ data }, null, 2)}</pre>
+            <Box
+                sx={{
+                    backgroundColor: "#e0e0e0",
+                    color: "black",
+                    height: "100%",
+                    width: "500px",
+                }}
+            >
+                <Typography variant="h5">WiCS</Typography>
+                <Typography variant="h3">Event name</Typography>
+                <Typography variant="p">Event description</Typography>
+            </Box>
         </Box>
     );
 }

@@ -17,70 +17,71 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import MovieIcon from "@mui/icons-material/Movie";
 import theme from "@/theme";
+import Link from "next/link";
 
 const drawerWidth = 240;
 
 interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * Remove this when copying and pasting into your project.
-   */
-  window?: () => Window;
+    /**
+     * Injected by the documentation to work in an iframe.
+     * Remove this when copying and pasting into your project.
+     */
+    window?: () => Window;
 }
 
 export default function ResponsiveDrawer(props: Props) {
+    const icons = [
+        <MovieIcon />,
+        <AddCircleOutlineIcon />,
+        <SmartToyIcon />,
+        <DraftsIcon />,
+    ];
 
+    const drawer = (
+        <div>
+            <Link href="/" style={{ textDecoration: "none" }}>
+                <Typography
+                    variant="h6"
+                    p={2}
+                    bgcolor={theme.palette.primary.main}
+                    color="white"
+                >
+                    CampusGenie
+                </Typography>
+            </Link>
+            <Divider sx={{ bgcolor: "white" }} />
+            <List>
+                {["Create Post"].map((text, index) => (
+                    <ListItem key={text} disablePadding>
+                        <ListItemButton href="/createpost">
+                            <ListItemIcon sx={{ color: "white" }}>
+                                <AddCircleOutlineIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItemButton>
+                    </ListItem>
+                ))}
+            </List>
+        </div>
+    );
 
-  const icons = [
-    <MovieIcon />,
-    <AddCircleOutlineIcon />,
-    <SmartToyIcon />,
-    <DraftsIcon />,
-  ];
-
-  const drawer = (
-    <div>
-      <Typography
-        variant="h6"
-        p={2}
-        bgcolor={theme.palette.primary.main}
-        color="white"
-      >
-        CampusGenie
-      </Typography>
-      <Divider sx={{ bgcolor: "white" }} />
-      <List>
-        {["Create Post"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton href="/createpost">
-              <ListItemIcon sx={{ color: "white" }}>
-                <AddCircleOutlineIcon />
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </div>
-  );
-
-  return (
-    <div>
-        <Drawer
-          variant="persistent"
-          sx={{
-            display: { sm: "block" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-              backgroundColor: theme.palette.primary.main,
-              color: "white",
-            },
-          }}
-          open
-        >
-          {drawer}
-        </Drawer>
-    </div>
-  );
+    return (
+        <div>
+            <Drawer
+                variant="persistent"
+                sx={{
+                    display: { sm: "block" },
+                    "& .MuiDrawer-paper": {
+                        boxSizing: "border-box",
+                        width: drawerWidth,
+                        backgroundColor: theme.palette.primary.main,
+                        color: "white",
+                    },
+                }}
+                open
+            >
+                {drawer}
+            </Drawer>
+        </div>
+    );
 }
