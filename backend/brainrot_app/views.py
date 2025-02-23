@@ -71,7 +71,7 @@ def process_video(bg, details, club_name, event_name, tone, persona, voice, p_uu
     post.body = script
     post.save()
 
-    heygen.get_video(v_uuid, script, avatar_id=persona, voice_id=voice)
+    heygen.get_video(v_uuid, script[:200], avatar_id=persona, voice_id=voice)
 
     movie.greenscreen_overlay(f"media/videos/{v_uuid}_green.mp4", bg, f"media/videos/{v_uuid}.mp4")
 
