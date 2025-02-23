@@ -113,18 +113,25 @@ def poll_video_status(video_id, headers, v_uuid):
             print(f"Unexpected status received: {status}. Retrying in 5 seconds...")
             time.sleep(5)
 
+# def get_video(v_uuid,
+#               script_text,
+#               avatar_id="Daisy-inskirt-20220818",
+#               voice_id="2d5b0e6cf36f460aa7fc47e3eee4ba54"):
+#     video_id, headers = generate_video(script_text,
+#                    avatar_id=avatar_id,
+#                    voice_id=voice_id,
+#                    background_color="#008000",
+#                    width=1080/2,
+#                    height=1920/2)
+#     print(f"Video generation started. Video ID: {video_id}")
+#     poll_video_status(video_id, headers, v_uuid)
+
+import subprocess
+
 def get_video(v_uuid,
               script_text,
               avatar_id="Daisy-inskirt-20220818",
               voice_id="2d5b0e6cf36f460aa7fc47e3eee4ba54"):
-    print(avatar_id)
-    video_id, headers = generate_video(script_text,
-                   avatar_id=avatar_id,
-                   voice_id=voice_id,
-                   background_color="#008000",
-                   width=1080/2,
-                   height=1920/2)
-    print(f"Video generation started. Video ID: {video_id}")
-    poll_video_status(video_id, headers, v_uuid)
-    
+   
+    print(subprocess.call(["copy", "videoA.mp4", f"media\\videos\\{v_uuid}.mp4"], shell=True))
 

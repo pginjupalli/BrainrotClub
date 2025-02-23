@@ -26,8 +26,6 @@ def perplexity_search(search):
         SO DON'T INCLUDE ANYTHING LIKE "[in an angry tone]" AT THE BEGINNING OR ANYTHING SIMILAR.\n
         THESE ARE IMPORTANT!\n
         """
-        
-    print(content)
 
     payload = {
         "model": "sonar-pro", # sonar-reasoning-pro

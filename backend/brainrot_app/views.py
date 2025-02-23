@@ -60,14 +60,16 @@ from scripts import perplexity
 def process_video(details, club_name, event_name, tone, persona, voice, p_uuid, v_uuid):
     
     script = perplexity.perplexity_search({"details": details, "club_name": club_name, "event_name": event_name, "tone": tone})
-    print(script)
     
     video = models.Video.objects.get(pk=v_uuid)
     post = models.Post.objects.get(pk=p_uuid)
     post.body = script
+    post.save()
     
     heygen.get_video(v_uuid, script, avatar_id=persona, voice_id=voice)
     
-    video.file = f"videos/{v_uuid}.mp4"
-    video.thumbnail = f"thumbnails/{v_uuid}.png"
+    movie.greenscreen_overlay(f"media/videos/{v_uuid}.mp4", "videoB.mp4")
+
+    video.file = f"media/videos/{v_uuid}.mp4"
+    video.thumbnail = f"media/thumbnails/{v_uuid}.png"
     video.save()
