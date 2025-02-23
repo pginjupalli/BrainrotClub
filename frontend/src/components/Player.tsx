@@ -63,7 +63,6 @@ export default function Player() {
         >
             <Box
                 sx={{
-                    backgroundColor: "red",
                     height: "100%",
                     aspectRatio: "9 / 16",
                 }}
@@ -102,6 +101,7 @@ export default function Player() {
                     color: "black",
                     height: "100%",
                     width: "500px",
+                    padding: "1rem",
                 }}
             >
                 <Typography variant="h5">{visiblePost?.club_name}</Typography>
