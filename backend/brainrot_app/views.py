@@ -93,7 +93,9 @@ def process_video(details, club_name, event_name, tone, persona, voice, p_uuid, 
 
     heygen.get_video(v_uuid, script, avatar_id=persona, voice_id=voice)
 
-    movie.greenscreen_overlay(f"media/videos/{v_uuid}.mp4", "videoB.mp4")
+    movie.greenscreen_overlay(
+        f"media/videos/{v_uuid}_green.mp4", "videoB.mp4", f"media/videos/{v_uuid}.mp4"
+    )
 
     video.file = f"media/videos/{v_uuid}.mp4"
     video.thumbnail = f"media/thumbnails/{v_uuid}.png"

@@ -45,6 +45,16 @@ def generate_video(script_text,
                 "background": {
                     "type": "color",
                     "value": background_color
+                },
+                "subtitles": {
+                    "enable": True,         # Enable subtitle generation.
+                    "auto_sync": True,      # Let HeyGen align the subtitles to the voiceover.
+                    "text": script_text,    # Use the same script text for the subtitles.
+                    "language": "en",       # Specify the language.
+                    "font": "Arial",        # (Optional) Specify a font.
+                    "font_size": 24,        # (Optional) Specify the font size.
+                    "color": "#FFFFFF",     # (Optional) Subtitle text color.
+                    "position": "bottom"    # (Optional) Subtitle position.
                 }
             }
         ],
@@ -93,7 +103,7 @@ def poll_video_status(video_id, headers, v_uuid):
             print(f"Video generation completed!\nVideo URL: {video_url}\nThumbnail URL: {thumbnail_url}")
             
             # Download and save the video to a file
-            video_filename = f"media/videos/{v_uuid}.mp4"
+            video_filename = f"media/videos/{v_uuid}_green.mp4"
             video_content = requests.get(video_url).content
             with open(video_filename, "wb") as video_file:
                 video_file.write(video_content)
@@ -133,5 +143,5 @@ def get_video(v_uuid,
               avatar_id="Daisy-inskirt-20220818",
               voice_id="2d5b0e6cf36f460aa7fc47e3eee4ba54"):
    
-    print(subprocess.call(["copy", "videoA.mp4", f"media\\videos\\{v_uuid}.mp4"], shell=True))
+    print(subprocess.call(["copy", "videoA.mp4", f"media\\videos\\{v_uuid}_green.mp4"], shell=True))
 
